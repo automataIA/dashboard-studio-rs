@@ -1,0 +1,15 @@
+[[hooks]]
+stage = "pre_build"
+command = "npm"
+command_arguments = ["run", "build:css"]
+
+[build]
+target = "index.html"
+dist = "dist"
+minify = "on_release"
+watch = ["src", "public", "index.html"]
+# public_url: Use "/" for local dev, override with --public-url in CI/CD
+public_url = "/"
+
+[serve]
+port = 3000

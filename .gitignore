@@ -1,0 +1,155 @@
+# ==============================================
+# Rust / Cargo
+# ==============================================
+/target/
+**/*.rs.bk
+.cargo/
+
+# Cargo.lock - commentare se si vuole versionare per progetti binari
+# Per progetti libreria, è meglio ignorarlo
+
+# ==============================================
+# Trunk (WASM build tool)
+# ==============================================
+/dist/
+/.trunk/
+*.wasm
+*.wasm.optimized
+# Exception: allow entire docs/ folder for GitHub Pages deployment
+!docs/
+
+# ==============================================
+# Node.js / npm
+# ==============================================
+/node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+# package-lock.json is needed for CI/CD reproducibility
+yarn.lock
+pnpm-lock.yaml
+
+# ==============================================
+# TailwindCSS / CSS
+# ==============================================
+/public/output.css
+test-output.css
+*.css.map
+# input.css is needed for Tailwind CSS build in CI/CD
+
+# ==============================================
+# Editor / IDE
+# ==============================================
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# JetBrains IDEs (IntelliJ, RustRover, etc.)
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Vim
+*.swp
+*.swo
+*.swn
+*~
+*.un~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# ==============================================
+# Sistema Operativo
+# ==============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+.directory
+.Trash-*
+
+# ==============================================
+# Environment / Secrets
+# ==============================================
+.env
+.env.local
+.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.key
+*.pem
+secrets/
+
+# ==============================================
+# Logs
+# ==============================================
+*.log
+logs/
+*.log.*
+
+# ==============================================
+# Temporary files
+# ==============================================
+.tmp/
+tmp/
+temp/
+*.tmp
+*.temp
+
+# ==============================================
+# Test / Coverage
+# ==============================================
+/coverage/
+# /docs folder is used for GitHub Pages deployment - keep it tracked
+/data
+*.profraw
+*.profdata
+*.lcov
+
+# ==============================================
+# Build artifacts (generici)
+# ==============================================
+/build/
+.cache/
+.parcel-cache/
+
+# ==============================================
+# WASM specific
+# ==============================================
+wasm-pack.log
+*.wasm.br
+*.wasm.gz
+
+# exclude md files except important documentation
+*.md
+!README.md
+!CLAUDE.md
+!TROUBLESHOOTING.md
+
+# exclude hidden files with extensions
+.*.*
+
+# Claude documentation folder
+claude_docs/

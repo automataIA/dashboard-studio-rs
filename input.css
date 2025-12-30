@@ -1,0 +1,292 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* Custom Scrollbar - Enhanced */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: oklch(var(--b3));
+    /* base-300 */
+    border-radius: 4px;
+    transition: background 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: oklch(var(--bc) / 0.4);
+    /* base-content opacity */
+}
+
+/* Firefox Scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(var(--b3)) transparent;
+}
+
+/* Grid Pattern Background */
+.bg-grid-pattern {
+    /* Using semantic colors: base-content with opacity for lines */
+    background-image: radial-gradient(oklch(var(--bc) / 0.2) 1px, transparent 1px);
+    background-size: 24px 24px;
+}
+
+/* Drop Zone Styles */
+.drop-zone {
+    transition: all 0.2s ease;
+    /* Default border using base-300 for subtle definition - varying opacity for similar effect */
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='currentColor' stroke-opacity='0.3' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    color: oklch(var(--bc));
+}
+
+.drop-zone:hover,
+.drop-zone.drag-over {
+    /* Primary color background with opacity using oklch alpha */
+    background-color: oklch(var(--p) / 0.1);
+    color: oklch(var(--p));
+    /* Primary color border - using currentColor to pick up the --p set above */
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='currentColor' stroke-width='2' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+}
+
+/* Data Pill Shadow */
+.data-pill {
+    box-shadow: 0 1px 2px 0 oklch(var(--bc) / 0.05);
+}
+
+/* Custom Scrollbar for Specific Areas */
+.custom-scrollbar {
+    scrollbar-width: thin;
+}
+
+/* Drag & Drop Feedback */
+.dragging {
+    opacity: 0.5;
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px oklch(var(--bc) / 0.3);
+    cursor: grabbing !important;
+    transition: all 0.2s ease;
+}
+
+.drag-over {
+    border-color: oklch(var(--p)) !important;
+    box-shadow: 0 0 0 3px oklch(var(--p) / 0.2) !important;
+    transform: scale(1.02);
+    transition: all 0.2s ease;
+}
+
+/* Widget Card Enhancements */
+.widget-card {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.widget-card:hover {
+    transform: translateY(-2px);
+}
+
+/* Smooth Transitions */
+.transition-smooth {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Focus Ring Enhancement */
+*:focus-visible {
+    outline: 2px solid oklch(60% 0.2 264);
+    outline-offset: 2px;
+}
+
+.dark *:focus-visible {
+    outline-color: oklch(60% 0.2 230);
+}
+
+/* Button Hover Effects */
+.btn-hover {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-hover::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-hover:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Chart Container Optimizations */
+.chart-container {
+    contain: layout style paint;
+    will-change: auto;
+}
+
+/* Native Dashboard Grid Fixes */
+.grid {
+    touch-action: none;
+    /* Prevent scrolling while dragging on mobile */
+}
+
+/* Container for widget content */
+[data-widget-id] .echarts-container {
+    flex: 1 1 auto !important;
+    min-height: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Border Drag Handles (4 sides) */
+.widget-border-handle {
+    background: transparent;
+    transition: background 0.2s ease;
+    pointer-events: none;
+    /* Disabled by default */
+}
+
+/* Enable drag handles when Shift is pressed */
+.shift-active .widget-border-handle {
+    pointer-events: auto;
+}
+
+/* Visual feedback for handles when Shift is active */
+.shift-active [data-widget-id]:hover .widget-border-handle {
+    background: oklch(var(--p) / 0.1);
+    cursor: move;
+}
+
+.shift-active .widget-border-handle:hover {
+    background: oklch(var(--p) / 0.3) !important;
+}
+
+/* Resize handle (bottom-right) */
+.ui-resizable-se {
+    background: oklch(var(--p));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.shift-active .ui-resizable-se {
+    opacity: 0.7;
+    pointer-events: auto;
+}
+
+.shift-active .ui-resizable-se:hover {
+    opacity: 1;
+}
+
+/* Prevent chart interactions during drag/resize */
+.shift-active [data-widget-id] .echarts-container {
+    pointer-events: none !important;
+}
+
+/* Re-enable after drag/resize (not strictly needed with pointer-events: none on handles, but good for safety) */
+.grid:not(.dragging):not(.resizing) [data-widget-id] .echarts-container {
+    pointer-events: auto;
+}
+
+/* Glassmorphism Effect for Modals/Overlays */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Loading Skeleton */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(90deg,
+            #f0f0f0 25%,
+            #e0e0e0 50%,
+            #f0f0f0 75%);
+    background-size: 1000px 100%;
+    animation: shimmer 2s infinite;
+}
+
+.dark .skeleton {
+    background: linear-gradient(90deg,
+            #2a2a2a 25%,
+            #3a3a3a 50%,
+            #2a2a2a 75%);
+}
+
+/* Micro-interactions */
+.pulse-subtle {
+    animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-subtle {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+/* Performance Optimization */
+.gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}
+
+/* Print Styles */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    * {
+        background: white !important;
+        color: black !important;
+    }
+}
+
+/* Widget Placeholder with Diagonal Stripes */
+.widget-stripes {
+    border: 2px dashed oklch(var(--bc) / 0.2);
+    background-color: oklch(var(--b2) / 0.5);
+    background-image: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        oklch(var(--bc) / 0.05) 10px,
+        oklch(var(--bc) / 0.05) 20px
+    );
+}

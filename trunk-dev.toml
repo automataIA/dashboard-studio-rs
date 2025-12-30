@@ -1,0 +1,36 @@
+# Trunk configuration for local development
+# Usage: trunk serve --config trunk-dev.toml
+
+[[hooks]]
+stage = "pre_build"
+command = "npm"
+command_arguments = ["run", "build:css"]
+
+[build]
+target = "index.html"
+dist = "dist"
+# No minification in dev
+minify = "never"
+# Watch source files for hot reload
+watch = ["src", "public", "index.html"]
+# Public URL for local dev
+public_url = "/"
+# Enable source maps for debugging
+source_maps = true
+# Enable dev-mode feature for local development (empty BASE_PATH)
+features = ["dev-mode"]
+
+[serve]
+# Port for dev server (using 8080 to avoid conflicts)
+port = 8080
+# Open browser automatically (optional, commented out)
+# open = true
+# Disable compression for faster builds in dev
+no_spa = false
+# Enable CORS if needed for API calls
+# cors_allow_all = true
+
+[tools]
+# Use wasm-opt for smaller WASM files (disabled in dev for faster builds)
+# wasm_bindgen_version = "0.2"
+# wasm_opt_version = "version_118"

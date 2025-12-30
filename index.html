@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Studio</title>
+
+  <!-- Tailwind CSS con Trunk -->
+  <link data-trunk rel="css" href="public/output.css" />
+
+  <!-- Include favicon in dist output: see https://trunkrs.dev/assets/#icon -->
+  <link data-trunk rel="icon" href="public/favicon.ico" />
+
+  <!-- Include logo.png in dist output -->
+  <link data-trunk rel="copy-file" href="public/logo.png" />
+
+  <!-- include support for `wasm-bindgen --weak-refs` - see: https://rustwasm.github.io/docs/wasm-bindgen/reference/weak-references.html -->
+  <link data-trunk rel="rust" data-wasm-opt="z" data-weak-refs />
+</head>
+
+<body>
+  <!-- App mount point - Leptos verrà montato qui direttamente nel body -->
+
+  <!-- ECharts library (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+</body>
+
+</html>
